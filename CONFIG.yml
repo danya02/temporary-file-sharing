@@ -1,0 +1,6 @@
+store_for_seconds: 1800
+forbidden_extensions:
+  - html
+  - htm
+  - exe
+  - com
