@@ -1,0 +1,6 @@
+<form id="upload-form" enctype="multipart/form-data" method="post" action="upload.php?output=html">
+	<button id="upload-btn" class="btn" type="button">Drop or paste file(s)</button>
+	<input type="file" id="upload-input" class="form-control" name="files[]" multiple data-max-size="{{max_upload_size}}MiB">
+	<input type="submit" class="btn btn-primary mb-3" value="Submit">
+</form> 
+<ul id="upload-filelist"></ul>

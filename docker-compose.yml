@@ -6,6 +6,8 @@ services:
     volumes:
       - ${PWD}/CONFIG.yml:/CONFIG.yml
     expose: ["8000"]
+    ports:
+      - 8000:8000
     labels:
      - "traefik.enable=true"
      - "traefik.http.routers.temp-file-sharing.rule=Host(`errors.danya02.ru`)"
