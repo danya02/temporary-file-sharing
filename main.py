@@ -1,10 +1,11 @@
-from flask import Flask, render_template, send_file, request, g, jsonify, url_for, abort, make_response
+from flask import Flask, render_template, send_file, request, g, jsonify, url_for, abort, make_response, Response
 import yaml
 from database import *
 import os
 import uuid
 import hashlib
 import datetime
+import humanize
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -21,7 +22,9 @@ def load_config():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',
+            file_size=humanize.naturalsize(g.conf['max_file_size']*1024*1024, binary=True),
+            storage_time=humanize.naturaldelta(datetime.timedelta(seconds=g.conf['store_for_seconds'])))
 
 @app.route('/style.css')
 def style():
@@ -112,6 +115,8 @@ def upload_files():
     # if this is the JSON code from pomf's source, then format the response as it expects
     if request.args.get('format') == 'json':
         return jsonify({'success': 'true', 'files': [{'hash': sha256, 'name': file.filename, 'url': url, 'size': processed_bytes}]})
+    elif request.args.get('format') == 'text':
+        return Response(url, mimetype='text/plain')
     else:
         # it can either be a web browser, which can handle the incomplete HTML, or a script, which can find the URL easier.
         return f'Your file is now live at: <a href="{url}">{url}</a>'
