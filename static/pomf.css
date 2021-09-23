@@ -1,21 +1,23 @@
 *,
 :after,
 :before {
- box-sizing:border-box
+ box-sizing:border-box;
+ background: black;
+ color: white;
 }
 img,
 input[type=image] {
  vertical-align:middle
 }
 a {
- color:#0078b4;
+ color:#fff;
  text-decoration:none;
  transition:color .25s
 }
 a:active,
 a:focus,
 a:hover {
- color:#005580
+ color:#00e7ff
 }
 a:focus {
  outline:thin dotted #333
@@ -36,17 +38,17 @@ a:focus {
  text-rendering:optimizelegibility
 }
 .jumbotron .lead {
- font-size:21px;
- font-weight:200;
+ font-size:28px;
+ font-weight:300;
  line-height:30px;
  margin-bottom:20px;
  transition:font-size .5s
 }
 .jumbotron .btn {
- background:rgba(202,230,190,.75);
+ background:rgba(0,0,0,.75);
  border:1px solid #b7d1a0;
- border-radius:4px;
- color:#468847;
+ border-radius:8px;
+ color:#00ff00;
  cursor:pointer;
  display:inline-block;
  font-size:24px;
@@ -58,7 +60,7 @@ a:focus {
 .jumbotron .btn:active,
 .jumbotron .btn:focus,
 .jumbotron .btn:hover {
- background-color:#bce4aa;
+ background-color:#004f00;
  text-decoration:none
 }
 .alert {
@@ -84,14 +86,34 @@ a:focus {
  list-style-type:none;
  margin:20px 50px;
  padding:0;
- text-align:left
+ text-align:left;
+ font-size:larger;
 }
 .error#upload-filelist {
  color:#891a18
 }
 button.upload-clipboard-btn {
- height:32px
+ border-radius: 8px;
+ border-style: solid;
+ margin: 4px;
+ background-color: #000000;
+ transition: background-color 0.25s;
 }
+
+button.upload-clipboard-btn:hover {
+ background-color: #0d2777;
+}
+
+button.upload-clipboard-btn:active {
+ background-color: #0070ff;
+}
+
+button.upload-clipboard-btn img {
+ width: 32px;
+ height: 32px;
+ background: unset;
+}
+
 .error#upload-filelist .progress-percent {
  color:#b94a48
 }
@@ -122,12 +144,12 @@ button.upload-clipboard-btn {
  margin-left:8px;
  vertical-align:middle
 }
-.file-url a {
+/*.file-url a {
  color:#5c5c5c
 }
 .file-url a:hover {
  color:#1c1c1c
-}
+}*/
 .progress-percent {
  float:right
 }
@@ -237,4 +259,20 @@ progress[value]::-webkit-progress-bar {
 }
 .js #upload-btn {
  display:inline-block!important
+}
+
+
+/* Breaking Bootstrap's tooltips to make them work in dark mode */
+
+.tooltip-inner {
+ background-color: #fff;
+ color: #000;
+ border-color: white;
+ border-style: solid;
+ border-width: 2px;
+ border-radius: 4px;
+}
+
+.tooltip-arrow {
+ display: none !important;
 }

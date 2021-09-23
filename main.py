@@ -30,6 +30,14 @@ def index():
 def style():
     return send_file('/bootstrap.min.css')
 
+@app.route('/bootstrap.js')
+def bootstrap_js():
+    return send_file('/bootstrap.js')
+
+@app.route('/copy-icon.svg')
+def copy_icon():
+    return send_file('/static/copy_all_white_48dp.svg')
+
 def error(code, text):
     response = make_response('<h1>' + text + '</h1>')
     response.headers['X-Errorpage-Title'] = f'{code} {text}'

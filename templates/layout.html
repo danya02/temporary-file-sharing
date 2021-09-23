@@ -5,11 +5,12 @@
 		<meta charset="utf-8">
     		<meta name="viewport" content="width=device-width, initial-scale=1">
 		{% block head %} {% endblock %}
+		<script src="{{url_for('bootstrap_js')}}"></script>
 		<script src="{{url_for('static', filename='app.js')}}"></script>
 		<link href="{{url_for('static', filename='pomf.css')}}" rel="stylesheet">
 	</head>
 	<body>
-		<div class="container">
+		<div class="">
 			{% block body %} This should not be visible to the end user. If you see this, this is a <em>big</em> error. {% endblock %}
 		</div>
 	</body>

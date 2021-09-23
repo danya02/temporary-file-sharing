@@ -105,9 +105,13 @@
         var copy = document.createElement('button');
         copy.className = 'upload-clipboard-btn';
         var glyph = document.createElement('img');
-        glyph.src = 'img/glyphicons-512-copy.png';
+	glyph.src = '/copy-icon.svg';
         copy.appendChild(glyph);
         url.appendChild(copy);
+	
+	copy.title = "Copied!";
+	/* Initialize tooltip on the button to copy */
+	var copy_tooltip = new bootstrap.Tooltip(copy, {trigger: 'manual'});
         copy.addEventListener("click", function(event) {
           /* Why create an element?  The text needs to be on screen to be
              selected and thus copied. The only text we have on-screen is the link
@@ -125,7 +129,11 @@
           window.getSelection().addRange(range);
           document.execCommand("copy");
           link.removeChild(element);
+	  
+	  copy_tooltip.show();
+	  setTimeout(function() {copy_tooltip.hide(); }, 1000);
         });
+	
       } else {
         bar.innerHTML = 'Error: ' + response.description;
       }
@@ -280,4 +288,7 @@
   uploadButton.addEventListener('click', selectFiles.bind(this, uploadInput));
   uploadButton.addEventListener('drop', handleDragDrop.bind(this, state, uploadButton), false);
   document.getElementById('upload-form').classList.add('js');
+
+
+
 });
