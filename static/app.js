@@ -151,7 +151,7 @@
     var bar = row.querySelector('.file-progress');
     var percentIndicator = row.querySelector('.progress-percent');
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'upload.php');
+    xhr.open('POST', 'upload?format=json');
 
     xhr['row'] = row;
     xhr['bar'] = bar;
@@ -163,7 +163,7 @@
     xhr.upload.onprogress = handleUploadProgress;
 
     var form = new FormData();
-    form.append('files[]', file);
+    form.append('files', file);
     xhr.send(form);
   }
 

@@ -4,7 +4,9 @@ services:
     build: .
     restart: unless-stopped
     volumes:
-      - ${PWD}/CONFIG.yml:/CONFIG.yml
+      - ./CONFIG.yml:/CONFIG.yml
+      - ./file-data.db:/file-data.db
+      - ./content:/content
     expose: ["8000"]
     ports:
       - 8000:8000

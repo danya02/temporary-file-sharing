@@ -1,7 +1,39 @@
 max_file_size: 50
 store_for_seconds: 1800
-forbidden_extensions:
-  - html
-  - htm
+
+filter_mode: block
+# filter_mode: allow
+
+filter_extensions:
   - exe
+  - scr
   - com
+  - vbs
+  - bat
+  - cmd
+  - htm
+  - html
+  - jar
+  - msi
+  - apk
+  - phtml
+  - svg
+
+filter_mime:
+  - application/msword
+  - text/html
+  - application/x-dosexec
+  - application/java
+  - application/java-archive
+  - application/x-executable
+  - application/x-mach-binary
+  - image/svg+xml
+
+long_extensions:
+  - tar.gz
+  - tar.bz
+  - tar.bz2
+  - tar.xz
+  - user.js
+
+log_ip: false
